@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML Mailer</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <nav class="app-toolbar">
+      <ul>
+        <li class="email-to">
+          <label for="email-to">Email to:</label>
+          <input type="text" id="email-to">
+        </li>
+        <li class="mode">
+          <span>
+            <input type="radio" id="showHtml" value="html" name="mode" checked>
+            <label for="showHtml">HTLM</label>  
+          </span>
+          <span>
+            <input type="radio" id="showContext" value="context" name="mode">
+            <label for="showContext">Context</label>  
+          </span>
+        </li>
+        <li>
+          <button id="saveContentButton">
+            Save
+          </button>
+        </li>
+        <li>
+          <button id="sendMailButton">
+            Send Mail
+          </button>
+        </li>
+        <li>
+          <button id="compileHtmlButton">
+            Preview
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="app-main">
+      <div id="editor-container">
+      </div>  
+      <div id="preview-container">
+        <iframe src="" frameborder="0" id="preview-iframe"></iframe>
+      </div>
+    </div>
+    <button id="sendMailButton">Send mail</button>
+
+    <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+
+    </script>  
+    <script src="./renderer.js"></script>
+
+  </body>
+</html>

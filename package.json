@@ -1,0 +1,29 @@
+{
+  "name": "html-mailer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "initialize": "touch ./out/mail-context.json && touch ./out/mail.html && echo '{}' >> ./out/mail-context.json",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elias89/html-mailer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elias89/html-mailer/issues"
+  },
+  "homepage": "https://github.com/elias89/html-mailer#readme",
+  "devDependencies": {
+    "electron": "^21.2.3"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "monaco-editor": "^0.34.1",
+    "nodemailer": "^6.8.0"
+  }
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "initialize": "touch ./out/mail-context.json && touch ./out/mail.html && echo '{}' >> ./out/mail-context.json",
+    "initialize": "touch ./out/mail-context.json && touch ./out/mail.html && echo {} >> ./out/mail-context.json",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

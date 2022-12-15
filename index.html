@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>HTML Mailer</title>
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./node_modules/@bitlib/flayout/dist/flayout.min.css" type="text/css" />
+
   </head>
   <body>
     <nav class="app-toolbar">
@@ -40,19 +42,25 @@
       </ul>
     </nav>
     <div class="app-main">
-      <div id="editor-container">
-      </div>  
-      <div id="preview-container">
-        <iframe src="" frameborder="0" id="preview-iframe"></iframe>
+      <div class="flayout-group flayout-vertical">
+        <div class="flayout-pane">
+          <div id="editor-container">
+          </div>  
+        </div>
+        <div class="flayout-pane">
+          <div id="preview-container">
+            <iframe src="" frameborder="0" id="preview-iframe"></iframe>
+          </div>
+        </div>
       </div>
     </div>
-    <button id="sendMailButton">Send mail</button>
-
+    <!-- <button id="sendMailButton">Send mail</button> -->
+    <script src="./node_modules/@bitlib/flayout/dist/flayout.umd.min.js"></script>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
-    <script>
-
-    </script>  
     <script src="./renderer.js"></script>
 
+    <script>
+      flayout();
+    </script>
   </body>
 </html>

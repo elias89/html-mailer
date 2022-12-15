@@ -20,7 +20,9 @@ require(['vs/editor/editor.main'], function () {
     language: 'html',
     theme: 'vs-dark',
     automaticLayout: true,
-    wordWrap: 'on',
+    scrollbar: {
+      horizontal: 'visible'
+    }
   });
   const emailTo = window.localStorage.getItem('emailTo') || '';
   emailToElement.value = emailTo;

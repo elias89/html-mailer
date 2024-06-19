@@ -5,6 +5,8 @@ document.getElementById("compileHtmlButton").addEventListener("click", compileHt
 
 document.getElementById("showHtml").addEventListener("click", toggleMode);
 document.getElementById("showContext").addEventListener("click", toggleMode);
+document.getElementById("wordwrapToggle").addEventListener("click", toggleWordWrap);
+
 
 const previewIframe = document.getElementById("preview-iframe");
 const emailToElement = document.getElementById("email-to");
@@ -13,6 +15,8 @@ require.config({ paths: { vs: './node_modules/monaco-editor/min/vs' } });
 
 let editor;
 let editorMode = 'html';
+let wordWrap = false;
+
 require(['vs/editor/editor.main'], function () {
   const content = window.api.getContent('html');
   editor = monaco.editor.create(document.getElementById('editor-container'), {
@@ -20,6 +24,7 @@ require(['vs/editor/editor.main'], function () {
     language: 'html',
     theme: 'vs-dark',
     automaticLayout: true,
+    wordWrap: "off",
     scrollbar: {
       horizontal: 'visible'
     }
@@ -54,4 +59,16 @@ function sendMail() {
   const emailTo = emailToElement.value;
   window.localStorage.setItem('emailTo', emailTo);
   window.api.sendMail(emailTo);
+}
+function toggleWordWrap(e) {
+  wordWrap = !wordWrap;
+
+  if (wordWrap) {
+      e.target.classList.add('on');
+  } else {
+    e.target.classList.remove('on')
+  }
+
+  editor.updateOptions({ wordWrap: wordWrap? 'on': 'off' })
+  //window.api.toggleWordWrap(wordWrap);
 }

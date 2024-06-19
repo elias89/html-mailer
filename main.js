@@ -41,6 +41,9 @@ function compileMail () {
   return compileHandlebars(htmlFile, JSON.parse(contextFile));
 }
 
+function toggleWordWrap() {
+  
+}
 const createWindow = () => {
   const win = new BrowserWindow({
     webPreferences: {
@@ -53,7 +56,7 @@ const createWindow = () => {
 
   ipcMain.on('getContent', getContent);
   ipcMain.on('compileHtml', compileHtml);
-
+  ipcMain.on('toggleWordWrap', toggleWordWrap);
   win.loadFile(`index.html`);
   win.maximize();
 };

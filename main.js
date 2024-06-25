@@ -50,6 +50,7 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
       worldSafeExecuteJavaScript: true,
     },
+    autoHideMenuBar: true
   });
   ipcMain.handle('sendMail', sendHtmlMail);
   ipcMain.handle('saveContent', saveContent);

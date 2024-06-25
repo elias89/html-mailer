@@ -2,7 +2,8 @@
 > Alpha version | This is in very early stages, I'm still adding features.
 # HTML mailer
 
-![Screenshot from 2022-11-16 20-58-36](https://user-images.githubusercontent.com/7673130/202320825-28a5cfe4-ed84-4c7a-bcf7-a87dd0eb4df0.png)
+![image](https://github.com/elias89/html-mailer/assets/7673130/478c2f35-ef5f-4f99-bc54-d1d040d86e72)
+
 
 
 This is an HTML email editor and mailer. You can **edit, preview, and send emails quickly**.

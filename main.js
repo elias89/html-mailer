@@ -8,7 +8,7 @@ const sendMail = require('./mailer');
 const OUT_DIR = './out';
 const HTML_FILE = 'mail.html';
 const CONTEXT_FILE = 'mail-context.json';
-
+let win; // Main electron window
 
 function sendHtmlMail(event, emailTo) {
   const compiledMail = compileMail();
@@ -30,7 +30,6 @@ function compileHtml (event) {
   event.returnValue = compileMail();
 }
 
-
 function compileHandlebars(html, context) {
   const template = Handlebars.compile(html);
   return template(context);
@@ -41,22 +40,25 @@ function compileMail () {
   return compileHandlebars(htmlFile, JSON.parse(contextFile));
 }
 
-function toggleWordWrap() {
-  
+function toggleDevTools(event) {
+  win.webContents.toggleDevTools();
 }
+
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      worldSafeExecuteJavaScript: true
+      worldSafeExecuteJavaScript: true,
     },
   });
   ipcMain.handle('sendMail', sendHtmlMail);
   ipcMain.handle('saveContent', saveContent);
+  ipcMain.handle('toggleDevTools', toggleDevTools);
+
 
   ipcMain.on('getContent', getContent);
   ipcMain.on('compileHtml', compileHtml);
-  ipcMain.on('toggleWordWrap', toggleWordWrap);
+  
   win.loadFile(`index.html`);
   win.maximize();
 };

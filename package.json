@@ -22,7 +22,7 @@
     "electron": "^21.2.3"
   },
   "dependencies": {
-    "@bitlib/flayout": "^1.0.6",
+    "@bitlib/flayout": "^2.0.2",
     "handlebars": "^4.7.7",
     "monaco-editor": "^0.34.1",
     "nodemailer": "^6.8.0"

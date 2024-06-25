@@ -1,21 +1,25 @@
 
 document.getElementById("sendMailButton").addEventListener("click", sendMail);
 document.getElementById("saveContentButton").addEventListener("click", saveContent);
-document.getElementById("compileHtmlButton").addEventListener("click", compileHtml);
 
+document.getElementById("toggleDevTools").addEventListener("click", toggleDevTools);
 document.getElementById("showHtml").addEventListener("click", toggleMode);
 document.getElementById("showContext").addEventListener("click", toggleMode);
 document.getElementById("wordwrapToggle").addEventListener("click", toggleWordWrap);
 
-
 const previewIframe = document.getElementById("preview-iframe");
 const emailToElement = document.getElementById("email-to");
+const layoutMain = document.getElementById("flayout-main");
 
 require.config({ paths: { vs: './node_modules/monaco-editor/min/vs' } });
 
 let editor;
 let editorMode = 'html';
 let wordWrap = false;
+let devTools = false;
+
+layoutMain.addEventListener("flayoutStart", onFlayoutDragStart);
+layoutMain.addEventListener("flayoutEnd", onFlayoutDragEnd);
 
 require(['vs/editor/editor.main'], function () {
   const content = window.api.getContent('html');
@@ -39,6 +43,17 @@ function saveContent() {
     editorMode: editorMode,
     content: content
   });
+  compileHtml();
+}
+function toggleDevTools(e) {
+  devTools = !devTools;
+
+  if (devTools) {
+    e.target.classList.add('on');
+  } else {
+    e.target.classList.remove('on')
+  }
+  window.api.toggleDevTools();
 }
 function toggleMode(event) {
   // First save any non saved content, then swtich mode
@@ -71,4 +86,13 @@ function toggleWordWrap(e) {
 
   editor.updateOptions({ wordWrap: wordWrap? 'on': 'off' })
   //window.api.toggleWordWrap(wordWrap);
+}
+function onFlayoutDragStart() {
+  console.log("onFlayoutDragStart")
+  previewIframe.style.pointerEvents = 'none';
+}
+
+function onFlayoutDragEnd() {
+  console.log("onFlayoutDragEnd")
+  previewIframe.style.pointerEvents = 'all';
 }

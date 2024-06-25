@@ -1,6 +1,10 @@
 body, html {
   width: 100%;
   height: 100%;
+
+  --primary-color: #5729ce;
+    /* box-shadow: 0 0 4px cyan; */
+  --primary-color--light: #b9a5ec;
 }
 body, p, ul, li {
   padding: 0;
@@ -19,6 +23,19 @@ body {
 html, body {
   height: 100%;
 }
+input:focus {
+  outline: none;
+}
+input[type="radio"] {
+  margin: 0;
+}
+input[type="radio"]::after {
+  visibility: visible;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-color);
+}
 #editor-container, #preview-container {
   display: flex;
   height: 100%;
@@ -34,26 +51,53 @@ html, body {
   display: flex;
   padding: 8px;
   background-color: #282828;
-  border-bottom: 1px solid #3e3e3e;
+  border-bottom: 1px solid var(--primary-color);
   font-family: monospace;
   font-size: 14px;
+  color: var(--primary-color--light);
+  flex-direction: column;
+  gap: 8px;
+}
+.app-subnav {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.link {
+  text-decoration: none;
+  color: var(--primary-color--light);
 }
 .app-toolbar .mode {
-  margin-right: 15px;
+  background-color: #3c3c3c;
+  display: flex;
+  padding: 0 4px;
+  font-size: 13px;
+  border-radius: 4px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-color);
+  gap: 5px;
+}
+
+.app-toolbar .mode span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
 }
 .app-toolbar .email-to {
   align-items: center;
-  margin-right: 10px;
-  padding-right: 10px;
-  border-right: 1px solid #3e3e3e;
 }
 .app-toolbar .email-to input {
   margin-left: 5px;
   border: none;
   background-color: #3e3e3e;
   border-radius: 3px;
-  color: aqua;
+  color: var(--primary-color--light);
   padding: 5px;
+  border: 1px solid var(--primary-color);
+  outline: none;
 }
 .app-toolbar input[type="radio"],
 .app-toolbar label {
@@ -63,31 +107,42 @@ html, body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  color: white;
+  gap: 8px;
 }
 .app-toolbar li {
   display: flex;
-  margin-right: 5px;
 }
 
 .app-toolbar li button {
-    padding: 8px;
     background-color: #3c3c3c;
     color: black;
     border-radius: 3px;
-    border: none;
+    border: 1px solid var(--primary-color);
     cursor: pointer;
-    color: aqua;
-    box-shadow: 0 0 4px cyan;
+    color: var(--primary-color--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
 }
-#wordwrapToggle.on {
-  color: black;
-  background-color: aqua;
+.app-toolbar button .icon {
+  font-size: 20px;
+}
+.button-toggle::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  color: blue;
+}
+.button-toggle.on {
+  box-shadow: inset 0 0 20px var(--primary-color);
 }
 #preview-container iframe {
   width: 100%;
   height: 100%;
-  pointer-events: none;
-}
+  }
